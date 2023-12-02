@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import './App.css';
+import './SignUp.css';
 
-function App() {
+function SignUp() {
 
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
  
 
@@ -15,12 +16,13 @@ function App() {
   const guardarClick = (e) => {
     e.preventDefault(); 
 
-    if (!username || !password) {
+    if (!username || !password || !email) {
       alert("Por favor, complete todos los campos requeridos.");
       return; 
     }
   
     console.log("Username:", username);
+    console.log("Email:", email);
     console.log("Password:", password);
   };
 
@@ -29,7 +31,7 @@ function App() {
     <div className="wrapper">
         <img src="/img/logo.png" alt="Logo" />
     <div className="App">
-        <h1>Login</h1>
+        <h1>Sign Up</h1>
         <div className="formulario">
         <div className="campo">
         <input
@@ -37,9 +39,20 @@ function App() {
             name="username"
             value={username}
             onChange={(e) => cambiarValor(e, setUsername)}
-            placeholder="Username" required
+            placeholder="type your username" required
         />
          <ion-icon name="person-outline" className="icono" style={{ right: '60px', top: '60%', position: 'absolute' }}></ion-icon>
+        </div>
+
+        <div className="campo">
+        <input
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => cambiarValor(e, setEmail)}
+            placeholder="type your email" required
+        />
+         <ion-icon name="mail-outline" className="icono" style={{ right: '60px', top: '68%', position: 'absolute' }}></ion-icon>
         </div>
        
         <div className="campo">
@@ -49,14 +62,14 @@ function App() {
             value={password}
             onChange={(e) => cambiarValor(e, setPassword)}
             type="password" 
-            placeholder="Password" required
+            placeholder="******" required
         />
-        <ion-icon name="lock-closed-outline" className="icono" style={{ right: '60px', top: '68%', position: 'absolute' }}></ion-icon>
+        <ion-icon name="lock-closed-outline" className="icono" style={{ right: '60px', top: '75%', position: 'absolute' }}></ion-icon>
         </div>
-        <button type="button" className="btn-login" onClick={guardarClick}>Login</button>
+        <button type="button" className="btn-login" onClick={guardarClick}>Sign Up</button>
       </div>
         <div className='account'>
-            <h2>Forgot password?</h2>
+            <h2>or Login</h2> 
         </div>
     </div>
     </div>
@@ -64,4 +77,4 @@ function App() {
 }
 
 
-export default App;
+export default SignUp;
